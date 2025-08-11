@@ -30,7 +30,7 @@ export default function App() {
   useEffect(() => {
     async function init() {
       try {
-        const MODEL_URL = '/models';
+        const MODEL_URL = './models';
         await faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL);
         await faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL);
         setStatus('Starting camera…');
