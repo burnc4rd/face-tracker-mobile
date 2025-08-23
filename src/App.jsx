@@ -182,7 +182,7 @@ export default function App() {
         }
         .glassContent { position: relative; z-index: 1; }
       `}</style>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
         {/* Single iPhone-like container (screen only) */}
         <div
           style={{
@@ -228,29 +228,9 @@ export default function App() {
 
             {/* Content area split: camera (50%) and sentiment (50%) */}
             <div style={{ display: 'flex', flexDirection: 'column', flex: 1, gap: 12 }}>
-              {/* Inner camera frame (50%) */}
-              <div
-                style={{
-                  position: 'relative',
-                  background: '#0e0e10',
-                  borderRadius: 24,
-                  padding: 8,
-                  boxShadow: 'inset 0 0 0 1px rgba(255,255,255,0.08)',
-                  width: '100%',
-                  flex: 1,
-                  display: 'flex',
-                  minHeight: 0,
-                }}
-              >
-                <div
-                  style={{
-                    position: 'relative',
-                    flex: 1,
-                    borderRadius: 18,
-                    overflow: 'hidden',
-                    background: '#000',
-                  }}
-                >
+              {/* Inner camera frame (50%) - match sentiment frame width and visual container */}
+              <div className="glassPanel" style={{ width: '100%', flex: 1, display: 'flex', minHeight: 0 }}>
+                <div className="glassContent" style={{ position: 'relative', flex: 1, borderRadius: 18, overflow: 'hidden', background: '#000' }}>
                   <video
                     ref={videoRef}
                     muted
@@ -285,7 +265,7 @@ export default function App() {
                 </div>
               </div>
 
-              {/* Sentiment frame (50%) with glass effect */}
+              {/* Sentiment frame (50%) with glass effect - same width as camera container */}
               <div className="glassPanel" style={{ color: '#fff', display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}>
                 <div className="glassContent" style={{ display: 'flex', flexDirection: 'column', padding: 14, height: '100%' }}>
                   {/* Header (centered) */}
